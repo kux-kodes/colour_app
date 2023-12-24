@@ -1,8 +1,6 @@
 package com.example.colour_mixer
 
-import android.bluetooth.BluetoothGattServer
 import android.os.Bundle
-import android.text.style.BackgroundColorSpan
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -11,14 +9,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -35,19 +31,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.colour_mixer.ui.theme.Colour_mixerTheme
 
 class MainActivity : ComponentActivity() {
-    lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Colour_mixerTheme {
-                navController= rememberNavController()
-                SetupNavGraph(navController = navController)
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Overall_Screen(navController= rememberNavController())
-                }
+                 val navController=rememberNavController()
+                SetupNavGraph(navHostController= navController)
             }
         }
     }
@@ -55,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Overall_Screen(navController: NavController) {
+fun Overall_Screen(onNavigation:()->Unit) {
     Box(modifier = Modifier) {
         Surface(
             modifier = Modifier
@@ -64,9 +53,7 @@ fun Overall_Screen(navController: NavController) {
             color = Color(255, 228, 225)
         ) {
             Instruction_1()
-            Enter_button()
-            Cancel_button()
-            Color_grid(navController= rememberNavController())
+            Color_grid()
         }
     }
 }
@@ -79,65 +66,18 @@ fun Instruction_1() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top
     ) {
-        Surface(
-            modifier = Modifier
-                .width(100.dp)
-                .height(100.dp)
-                .clip(RoundedCornerShape(20.dp))
-        ) {
             Text(
                 text = "Please Choose A Colour",
-                modifier = Modifier.padding(20.dp)
+                modifier = Modifier
+                    .padding(20.dp)
+                    .clip(RoundedCornerShape(10.dp)),
+                fontWeight= FontWeight.Bold
             )
-        }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun Enter_button() {
-    Row(
-        modifier = Modifier,
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Surface(
-            modifier = Modifier
-                .width(80.dp)
-                .height(30.dp)
-                .clip(RoundedCornerShape(10.dp)),
-        )
-        {
-            Text(textAlign= TextAlign.Center,
-                text = "Enter"
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Cancel_button() {
-    Row(
-        modifier = Modifier,
-        horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Surface(
-            modifier = Modifier
-                .width(80.dp)
-                .height(30.dp)
-                .clip(RoundedCornerShape(10.dp)),
-        )
-        {
-            Text(textAlign= TextAlign.Center,
-                text = "Cancel"
-            )
-        }
-    }
-}
-@Composable
-fun Color_grid(navController: NavController) {
+fun Color_grid(onNavigation:()->Unit) {
     var boxBackground: Color = Color.Red
     Box(modifier = Modifier, contentAlignment = Alignment.CenterEnd) {
         LazyVerticalGrid(columns = GridCells.Fixed(3)) {
@@ -154,12 +94,12 @@ fun Color_grid(navController: NavController) {
                     when (j) {
                         0 -> {
                             Text(text = "Red",
-                            modifier=Modifier.clickable(onClick = {navController.navigate(route=DefineScreens.RedDetails.route)})); boxBackground = Color.Blue
+                            modifier=Modifier.clickable(onClick = {onNavigation})); boxBackground = Color.Blue
                         }
 
                         1 -> {
                             Text(text = "Blue",
-                                modifier=Modifier.clickable(onClick = {navController.navigate(route=DefineScreens.BlueDetails.route)})); boxBackground = Color.Green
+                                modifier=Modifier.clickable(onClick = {onNavigation})); boxBackground = Color.Green
                         }
 
                         2 -> {
