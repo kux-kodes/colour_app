@@ -35,8 +35,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Colour_mixerTheme {
-                 val navController=rememberNavController()
-                SetupNavGraph(navHostController= navController)
+                val navController = rememberNavController()
+                SetupNavGraph(navController = navController)
             }
         }
     }
@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Overall_Screen(onNavigation:()->Unit) {
+fun Overall_Screen(navController:NavHostController) {
     Box(modifier = Modifier) {
         Surface(
             modifier = Modifier
@@ -53,7 +53,7 @@ fun Overall_Screen(onNavigation:()->Unit) {
             color = Color(255, 228, 225)
         ) {
             Instruction_1()
-            Color_grid()
+            Color_grid(navController = navController)
         }
     }
 }
@@ -77,7 +77,7 @@ fun Instruction_1() {
 }
 
 @Composable
-fun Color_grid(onNavigation:()->Unit) {
+fun Color_grid(navController:NavHostController) {
     var boxBackground: Color = Color.Red
     Box(modifier = Modifier, contentAlignment = Alignment.CenterEnd) {
         LazyVerticalGrid(columns = GridCells.Fixed(3)) {
@@ -94,12 +94,12 @@ fun Color_grid(onNavigation:()->Unit) {
                     when (j) {
                         0 -> {
                             Text(text = "Red",
-                            modifier=Modifier.clickable(onClick = {onNavigation})); boxBackground = Color.Blue
+                            modifier=Modifier.clickable {navController.navigate("red_details")}); println("works"); boxBackground = Color.Blue
                         }
 
                         1 -> {
                             Text(text = "Blue",
-                                modifier=Modifier.clickable(onClick = {onNavigation})); boxBackground = Color.Green
+                                modifier=Modifier.clickable {navController.navigate("blue_details")}); boxBackground = Color.Green
                         }
 
                         2 -> {

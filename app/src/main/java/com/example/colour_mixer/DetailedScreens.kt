@@ -12,9 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
-fun Red_details(navController: () -> Unit){
+fun Red_details(navController: NavHostController){
     Box(modifier = Modifier
         .width(200.dp)
         .height(200.dp)
@@ -28,7 +29,7 @@ fun Red_details(navController: () -> Unit){
     }
 }
 @Composable
-fun Blue_details(navController: () -> Unit){
+fun Blue_details(navController:NavHostController){
     Box(modifier = Modifier
         .width(200.dp)
         .height(300.dp)
