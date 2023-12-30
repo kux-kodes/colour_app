@@ -87,14 +87,13 @@ fun Color_grid(navController:NavHostController) {
                         .aspectRatio(1f)
                         .padding(10.dp)
                         .background(boxBackground)
-                        .clip(RoundedCornerShape(10.dp))
-                        .clickable(onClick = {}),
+                        .clip(RoundedCornerShape(10.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     when (j) {
                         0 -> {
                             Text(text = "Red",
-                            modifier=Modifier.clickable {navController.navigate("red_details")}); println("works"); boxBackground = Color.Blue
+                            modifier=Modifier.clickable {navController.navigate("red_details")}); boxBackground = Color.Blue
                         }
 
                         1 -> {
