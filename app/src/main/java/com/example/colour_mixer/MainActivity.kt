@@ -102,11 +102,13 @@ fun Color_grid(navController:NavHostController) {
                         }
 
                         2 -> {
-                            Text(text = "Green");boxBackground = Color.Yellow
+                            Text(text = "Green",
+                                modifier=Modifier.clickable { navController.navigate("green_details")});boxBackground = Color.Yellow
                         }
 
                         3 -> {
-                            Text(text = "Yellow"); boxBackground = Color.Gray
+                            Text(text = "Yellow",
+                                modifier=Modifier.clickable { navController.navigate("yellow_details")}); boxBackground = Color.Gray
                         }
 
                         4 -> {
