@@ -285,8 +285,57 @@ fun Grey_details(navController:NavHostController){
             .background(Color(255, 215, 0)))
     }
 }
+@Composable
+fun Magenta_details(navController:NavHostController) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .verticalScroll(rememberScrollState())
+            .border(10.dp, Color.Magenta, shape = RoundedCornerShape(10.dp))
+            .background(Color(255, 228, 225)),
+        verticalArrangement = Arrangement.Top
+    ) {
+        Text(
+            modifier = Modifier
+                .offset(10.dp, 10.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            text = "Description:" + "\n"
+        )
+        Text(
+            modifier = Modifier.padding(10.dp),
+            text= "Passion and Love: Magenta is often associated with strong emotions, passion, and love. It can represent deep, intense feelings and a sense of romance.\n" +
+                    "Spirituality and Healing: In some spiritual practices, magenta is seen as a color that promotes balance, spiritual growth, and healing. It is believed to encourage a connection between the physical and spiritual realms.\n" + "\n" +
+                    "Unconventional and Creative Expression: Magenta is a non-traditional color, often considered bold and daring. It can symbolize creativity, originality, and a willingness to step outside conventional boundaries.\n" + "\n" +
+                    "Energy and Power: Magenta's vibrancy and brightness convey a sense of energy and power. It is a color that demands attention and exudes confidence.")
+        Text(modifier= Modifier.offset(10.dp, 10.dp),
+            textAlign= TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            text= "Best Paired With:"+"\n")
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(20.dp, 10.dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(25, 25, 112)))
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(80.dp, (-30).dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(34, 139, 34)))
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(140.dp, (-70).dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(184, 115, 51)))
+    }
+}
 @Preview(showBackground = true)
 @Composable 
 fun ShowDetails(){
-    Grey_details(navController = rememberNavController())
+    Magenta_details(navController = rememberNavController())
 }

@@ -7,4 +7,5 @@ sealed class DefineScreens(val route: String){
     object GreenDetails: DefineScreens("green_details")
     object YellowDetails: DefineScreens("yellow_details")
     object GreyDetails: DefineScreens("grey_details")
+    object MagentaDetails: DefineScreens("magenta_details")
 }

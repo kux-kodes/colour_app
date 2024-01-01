@@ -25,8 +25,11 @@ fun SetupNavGraph(navController:NavHostController){
         composable(route=DefineScreens.YellowDetails.route){
             Yellow_details(navController = navController)
         }
-        composable(route= DefineScreens.GreyDetails.route){
+            composable(route= DefineScreens.GreyDetails.route){
             Grey_details(navController = navController)
+        }
+        composable(route= DefineScreens.MagentaDetails.route){
+            Magenta_details(navController = navController)
         }
     }
 }
