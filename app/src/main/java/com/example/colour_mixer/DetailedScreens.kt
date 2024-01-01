@@ -178,7 +178,7 @@ fun Blue_details(navController:NavHostController){
     }
 }
 @Composable
-fun YellowDetails(navController:NavHostController){
+fun Yellow_details(navController:NavHostController){
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(20.dp)
@@ -233,8 +233,60 @@ fun YellowDetails(navController:NavHostController){
             .background(Color(144, 238, 144)))
     }
 }
+@Composable
+fun Grey_details(navController:NavHostController){
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(20.dp)
+        .clip(RoundedCornerShape(20.dp))
+        .verticalScroll(rememberScrollState())
+        .border(10.dp, Color.Gray, shape = RoundedCornerShape(10.dp))
+        .background(Color(255, 228, 225)),
+        verticalArrangement = Arrangement.Top) {
+        Text(
+            modifier = Modifier
+                .offset(10.dp, 10.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            text = "Description:" + "\n"
+        )
+        Text(
+            modifier = Modifier.padding(10.dp),
+            text="Neutrality: Grey is often seen as a neutral and balanced color, sitting between black and white. It can symbolize impartiality, calmness, and the absence of extremes.\n" + "\n"+
+                    "Ambiguity: Grey is a color that lacks vibrancy and can be considered somewhat ambiguous. It is neither black nor white, representing a middle ground or a state of uncertainty.\n" + "\n"+
+                    "Sophistication: Grey is often associated with sophistication, formality, and timelessness. It is a popular choice in fashion, design, and aesthetics to convey a sense of elegance and refinement.\n" + "\n"+
+                    "Maturity: In some contexts, grey is linked to maturity and wisdom. As people age, their hair often turns grey, and this natural process is often associated with experience and knowledge.\n"+ "\n" +
+                    "Depression or Gloom: Grey can also be associated with feelings of sadness, depression, or gloom. A grey and overcast sky, for example, might be symbolic of a somber mood or a challenging period.\n" + "\n"+
+                    "Conformity: In certain situations, grey can symbolize conformity or a lack of individuality. This interpretation is often derived from the idea that grey represents blending in and avoiding attention.\n" + "\n"+
+                    "Industrialism: Grey is frequently associated with urban and industrial settings. Concrete, steel, and other industrial materials often have a grey hue, and the color is symbolic of modernity and urban environments.\n"+ "\n" +
+                    "Practicality: Grey is a practical and versatile color. It is often used for utilitarian purposes and can symbolize functionality, efficiency, and a lack of unnecessary embellishments."
+        )
+        Text(modifier= Modifier.offset(10.dp, 10.dp),
+            textAlign= TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            text= "Best Paired With:"+"\n")
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(20.dp, 10.dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(102, 0, 102)))
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(80.dp, (-30).dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(106, 90, 205)))
+        Box(modifier = Modifier
+            .width(40.dp)
+            .height(40.dp)
+            .offset(140.dp, (-70).dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(Color(255, 215, 0)))
+    }
+}
 @Preview(showBackground = true)
 @Composable 
 fun ShowDetails(){
-    YellowDetails(navController = rememberNavController())
+    Grey_details(navController = rememberNavController())
 }
