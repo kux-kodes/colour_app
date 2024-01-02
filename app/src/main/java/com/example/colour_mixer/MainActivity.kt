@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Overall_Screen(navController:NavHostController) {
+fun Overall_Screen(navController: NavHostController) {
     Box(modifier = Modifier) {
         Surface(
             modifier = Modifier
@@ -66,22 +66,22 @@ fun Instruction_1() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top
     ) {
-            Text(
-                text = "Please Choose A Colour",
-                modifier = Modifier
-                    .padding(20.dp)
-                    .clip(RoundedCornerShape(10.dp)),
-                fontWeight= FontWeight.Bold
-            )
+        Text(
+            text = "Please Choose A Colour",
+            modifier = Modifier
+                .padding(20.dp)
+                .clip(RoundedCornerShape(10.dp)),
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
 @Composable
-fun Color_grid(navController:NavHostController) {
+fun Color_grid(navController: NavHostController) {
     var boxBackground: Color = Color.Red
     Box(modifier = Modifier, contentAlignment = Alignment.CenterEnd) {
         LazyVerticalGrid(columns = GridCells.Fixed(3)) {
-            items(12) { j ->
+            items(9) { j ->
                 Box(
                     modifier = Modifier
                         .aspectRatio(1f)
@@ -93,60 +93,62 @@ fun Color_grid(navController:NavHostController) {
                     when (j) {
                         0 -> {
                             Text(text = "Red",
-                            modifier=Modifier.clickable {navController.navigate("red_details")}); boxBackground = Color.Blue
+                                modifier = Modifier.clickable { navController.navigate("red_details") }); boxBackground =
+                                Color.Blue
                         }
 
                         1 -> {
                             Text(text = "Blue",
-                                modifier=Modifier.clickable {navController.navigate("blue_details")}); boxBackground = Color.Green
+                                modifier = Modifier.clickable { navController.navigate("blue_details") }); boxBackground =
+                                Color.Green
                         }
 
                         2 -> {
                             Text(text = "Green",
-                                modifier=Modifier.clickable { navController.navigate("green_details")});boxBackground = Color.Yellow
+                                modifier = Modifier.clickable { navController.navigate("green_details") });boxBackground =
+                                Color.Yellow
                         }
 
                         3 -> {
                             Text(text = "Yellow",
-                                modifier=Modifier.clickable { navController.navigate("yellow_details")}); boxBackground = Color.Gray
+                                modifier = Modifier.clickable { navController.navigate("yellow_details") }); boxBackground =
+                                Color.Gray
                         }
 
                         4 -> {
                             Text(text = "Grey",
-                                modifier=Modifier.clickable{navController.navigate("grey_details")});boxBackground = Color.Magenta
+                                modifier = Modifier.clickable { navController.navigate("grey_details") });boxBackground =
+                                Color.Magenta
                         }
 
                         5 -> {
                             Text(text = "Magenta",
-                                modifier=Modifier.clickable{navController.navigate("magenta_details")}); boxBackground = Color.White
+                                modifier = Modifier.clickable { navController.navigate("magenta_details") }); boxBackground =
+                                Color.White
                         }
 
                         6 -> {
-                            Text(text = "White"); boxBackground = Color(255, 192, 203)
+                            Text(text = "White",
+                                modifier = Modifier.clickable { navController.navigate("white_details") }); boxBackground =
+                                Color(255, 192, 203)
                         }
 
                         7 -> {
-                            Text(text = "Pink"); boxBackground = Color(128, 0, 0)
+                            Text(text = "Pink",
+                                modifier = Modifier.clickable { navController.navigate("pink_details") }); boxBackground =
+                                Color(0, 0, 0)
                         }
 
                         8 -> {
-                            Text(text = "Maroon"); boxBackground = Color(128, 128, 0)
-                        }
-
-                        9 -> {
-                            Text(text = "Olive"); boxBackground = Color(139, 69, 19)
-                        }
-
-                        10 -> {
-                            Text(text = "Saddle Brown");boxBackground = Color(128, 0, 128)
-                        }
-
-                        11 -> {
-                            Text(text = "Purple")
+                            Text(
+                                text = "Black",
+                                modifier = Modifier.clickable { navController.navigate("black_details") },
+                                color = Color(255, 255, 255)
+                            )
                         }
                     }
                 }
             }
         }
     }
-    }
+}
